@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:gravity="center"
+    tools:context="com.valdiviezo.aniss.anahivaldiviezocursoandroid.ImageDownloaderActivity">
+
+
+    <EditText
+        android:id="@+id/editTextUrl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese URL de la imagen a descargar"
+        android:text="https://thecustomizewindows.com/wp-content/uploads/2012/01/Colorful-Android-Club.jpg"
+        android:layout_weight="1"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DESCARGAR"
+        android:id="@+id/buttonDescarga"
+        android:layout_weight="1"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewImagenDescargada"
+        android:layout_weight="8"
+        android:layout_gravity="center_horizontal" />
+
+
+</LinearLayout>

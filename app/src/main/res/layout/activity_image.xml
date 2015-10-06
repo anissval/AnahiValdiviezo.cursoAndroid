@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="com.valdiviezo.aniss.anahivaldiviezocursoandroid.ui.ImageActivity"
+    android:weightSum="10"
+    android:gravity="center">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/imageView_imagen"
+            android:src="@android:drawable/ic_menu_report_image"
+            android:layout_weight="9"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textView_texto"
+        android:layout_weight="1"
+         />
+</LinearLayout>
