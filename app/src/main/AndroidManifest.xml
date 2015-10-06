@@ -66,6 +66,12 @@
             android:name=".IntegrantesListActivity"
             android:label="@string/title_activity_integrantes_list" >
         </activity>
+
+        <receiver android:name=".MyBroadcastReceiver">
+            <intent-filter>
+                <action android:name=".Intent.ACTION_SCREEN_ON" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
