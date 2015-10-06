@@ -35,16 +35,10 @@ public class IntegrantesListActivity extends ListActivity{
 
         Toast.makeText(getBaseContext(), "Base de datos preparada", Toast.LENGTH_LONG).show();
 
-
-
         lista = (ListView) findViewById(android.R.id.list);
 
         dbAdapter = new IntegrantesDbAdapter(this);
-        try {
-            dbAdapter.abrir();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        dbAdapter.abrir();
 
         try {
             consultar();

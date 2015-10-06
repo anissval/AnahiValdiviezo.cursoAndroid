@@ -3,8 +3,7 @@ package com.valdiviezo.aniss.anahivaldiviezocursoandroid;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
-import java.sql.SQLException;
+import android.database.SQLException;
 
 /**
  * Created by Aniss on 22/09/2015.
@@ -34,7 +33,7 @@ public class IntegrantesDbAdapter {
     /**
      * Definimos lista de columnas de la tabla para utilizarla en las consultas a la base de datos
      */
-    private String[] columnas = new String[]{ C_COLUMNA_ID, C_COLUMNA_NOMBRE, C_COLUMNA_APELLIDO, C_COLUMNA_DIRECCION, C_COLUMNA_FOTO} ;
+    private String[] columnas = new String[]{ C_COLUMNA_ID, C_COLUMNA_NOMBRE, C_COLUMNA_APELLIDO, C_COLUMNA_DIRECCION, C_COLUMNA_FOTO};
 
     public IntegrantesDbAdapter(Context context)
     {
@@ -50,6 +49,7 @@ public class IntegrantesDbAdapter {
 
     public void cerrar()
     {
+
         dbHelper.close();
     }
 
@@ -62,7 +62,5 @@ public class IntegrantesDbAdapter {
 
         return c;
     }
-
-
 
 }
