@@ -63,4 +63,11 @@
         android:layout_height="wrap_content"
         android:text="Ejercicio 8, Rest Access"
         android:id="@+id/button8" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Lista Base de datos sqlite"
+        android:id="@+id/button9"
+        android:layout_gravity="center_vertical" />
 </LinearLayout>

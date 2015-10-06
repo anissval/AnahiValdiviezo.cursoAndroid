@@ -30,6 +30,7 @@ public class MainActivity extends Activity{
     private Button button_6;
     private Button button_7;
     private Button button_8;
+    private Button button_9;
     int time= 1000;
 
     private final int PICTURE_REQUEST_CODE = 2;
@@ -115,7 +116,16 @@ public class MainActivity extends Activity{
                 startActivity(i);
             }
         });
+        button_9 = (Button) findViewById(R.id.button9);
 
+        button_9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),IntegrantesListActivity.class);
+                startActivity(i);
+
+            }
+        });
 
     }
 
