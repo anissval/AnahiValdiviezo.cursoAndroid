@@ -35,22 +35,34 @@ public class LocationActivity extends Activity implements LocationListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
-        myLocationList = (ListView) findViewById(R.id.listViewLocation);
+
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,1,this);
-         adaptador = new AdaptadorLocation(getApplicationContext(), R.layout.location_view,listItems);
-         myLocationList.setAdapter(adaptador);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, this);
+        myLocationList = (ListView) findViewById(R.id.listViewLocation);
+        adaptador = new AdaptadorLocation(getApplicationContext(), R.layout.location_view,listItems);
+        myLocationList.setAdapter(adaptador);
+
          myLocationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
              @Override
              public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               //Muestra ubicacion en el mapa
-                 MyLocation entry= (MyLocation) parent.getAdapter().getItem(position);
+                 //Muestra ubicacion en el mapa
+                 MyLocation entry = (MyLocation) parent.getAdapter().getItem(position);
+                 Double lat = Double.parseDouble(entry.getLatitude());
+                 Double longit = Double.parseDouble(entry.getLongitude());
 
-                 String uri = String.format(Locale.ENGLISH, "geo:%f,%f",Double.parseDouble(entry.getLatitude()),Double.parseDouble(entry.getLongitude()));
+                 String uri = String.format(Locale.ENGLISH, "geo:%f,%f", lat, longit);
                  Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                  startActivity(intent);
              }
          });
+
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
 
     }
@@ -90,10 +102,9 @@ public class LocationActivity extends Activity implements LocationListener {
         listItems.add(myLocation);
         adaptador.notifyDataSetChanged();
 
-        String msg = "New Latitude: " + location.getLatitude()
-                + "New Longitude: " + location.getLongitude();
-
-        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+       // String msg = "New Latitude: " + location.getLatitude()
+          //      + "New Longitude: " + location.getLongitude();
+      //  Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
     }
 
     @Override

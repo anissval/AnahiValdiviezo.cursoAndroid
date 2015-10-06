@@ -19,6 +19,7 @@ public class IntegrantesCursorAdapter extends CursorAdapter {
 
     public IntegrantesCursorAdapter(Context context, Cursor c) throws SQLException {
         super(context, c);
+        //abre la db
         dbAdapter = new IntegrantesDbAdapter(context);
         dbAdapter.abrir();
     }

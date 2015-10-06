@@ -33,7 +33,7 @@ public class IntegrantesDbHelper extends SQLiteOpenHelper {
                 " int_nombre TEXT NOT NULL, " +
                 " int_apellido TEXT, " +
                 " int_direccion TEXT," +
-                " int_foto TEXT,");
+                " int_foto TEXT)");
 
         db.execSQL( "CREATE UNIQUE INDEX int_nombre ON INTEGRANTES(int_nombre ASC)" );
 
