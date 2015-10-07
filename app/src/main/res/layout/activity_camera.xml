@@ -4,20 +4,27 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     tools:context="com.valdiviezo.aniss.anahivaldiviezocursoandroid.ui.ImageActivity"
-    android:weightSum="10"
+    android:weightSum="11"
     android:gravity="center"
     >
-
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Compartir foto"
+        android:id="@+id/textView"
+        android:layout_weight="2"
+        android:textStyle="bold"/>
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/imageView_foto"
-        android:layout_weight="9"
+        android:layout_weight="8"
         android:src="@android:drawable/ic_menu_report_image" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Compartir"
         android:id="@+id/buttonCompartir"

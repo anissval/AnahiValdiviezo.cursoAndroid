@@ -68,7 +68,7 @@ public class RestActivity extends Activity {
                 readStreamS = readStream(con.getInputStream());
                 // Give output for the command line
 
-                Log.e("TAG", readStreamS);
+              //  Log.e("TAG", readStreamS);
 
                 if (readStreamS != null) {
                     try {
@@ -91,11 +91,11 @@ public class RestActivity extends Activity {
                             integrante.setDireccion(address);
                             integrante.setFoto(profileImage);
 
-                            Log.e("Integrante : ", integrante.getNombre());
+                           // Log.e("Integrante : ", integrante.getNombre());
                             integList.add(integrante);
                             int e=integList.size();
-                            Log.e("Tamaño arraylist :", String.valueOf(e));
-                            Log.d("@", name + ""  +lastName );
+                          //  Log.e("Tamaño arraylist :", String.valueOf(e));
+                           // Log.d("@", name + ""  +lastName );
                         }
                     } catch (JSONException e) {
                         //return null;

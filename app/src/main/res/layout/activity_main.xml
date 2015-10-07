@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#F3E2A9">
+    android:background="@color/fondo">
 
 
     <TextView
@@ -18,7 +18,7 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Ejercicio 1"
+        android:text="Ejercicio 1, mostrar imagen de la galeria"
         android:id="@+id/button"
         android:gravity="center" />
 
