@@ -45,15 +45,14 @@ public class IntegrantesListActivity extends ListActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_integrantes_list);
         progressBar = (ProgressBar) findViewById(R.id.progressBar2);
-        MyIntegrantesAsynk myA = new MyIntegrantesAsynk();
-        myA.execute();
+         //saque ejecucion asynktask
 
    /*
     * Declaramos el controlador de la BBDD y accedemos en modo escritura
     */
         IntegrantesDbHelper dbHelper = new IntegrantesDbHelper(getBaseContext());
 
-       db = dbHelper.getWritableDatabase();
+         db = dbHelper.getWritableDatabase();
 
         Toast.makeText(getBaseContext(), "Base de datos preparada", Toast.LENGTH_LONG).show();
 
@@ -63,7 +62,13 @@ public class IntegrantesListActivity extends ListActivity{
         dbAdapter.abrir();
 
         try {
+            if(isEmptyDb()){
+                MyIntegrantesAsynk2 myA2 = new MyIntegrantesAsynk2();
+                myA2.execute();
+               Log.e("Web Service", "database was empty");
+            }
             consultar();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -75,10 +80,26 @@ public class IntegrantesListActivity extends ListActivity{
         startManagingCursor(cursor);
         integrantesAdapter = new IntegrantesCursorAdapter(this, cursor);
         lista.setAdapter(integrantesAdapter);
+        Log.e("Consultar", "Rellena datos en listview");
+
+    }
+
+    public boolean isEmptyDb() {
+        int count = -1;
+        if (cursor != null && cursor.moveToFirst()) {
+            count = cursor.getInt(0);
+            if (count > 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        return true;
     }
 
 
-    public class MyIntegrantesAsynk extends AsyncTask<String, String, String> {
+    public class MyIntegrantesAsynk2 extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPreExecute() {
@@ -113,13 +134,8 @@ public class IntegrantesListActivity extends ListActivity{
                             String address = c.getString("address");
                             String profileImage = c.getString("profile_image");
 
-                            integrante.setId(Integer.parseInt(id));
-                            integrante.setNombre(name);
-                            integrante.setApellido(lastName);
-                            integrante.setDireccion(address);
-                            integrante.setFoto(profileImage);
+                            db.execSQL("INSERT INTO INTEGRANTES(_id, int_nombre,int_apellido,int_direccion,int_foto) VALUES('" + id + "','" + name + "','" + lastName+"','"+address+"','"+profileImage+"')");
 
-                          //  db.execSQL("INSERT INTO INTEGRANTES(_id, int_nombre,int_apellido,int_direccion,int_foto) VALUES('"+id+"','"+name+"','"+lastName+"','"+address+"','"+profileImage+"')");
                         }
 
                     } catch (JSONException e) {
@@ -140,12 +156,14 @@ public class IntegrantesListActivity extends ListActivity{
             super.onProgressUpdate(values);
             //This line shows progressBar again for recycled view
             progressBar.setVisibility(View.VISIBLE);
-
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            Log.e("TAG", "onPostExecute");
+            integrantesAdapter.swapCursor(dbAdapter.getCursor());
+            integrantesAdapter.notifyDataSetChanged();
             progressBar.setVisibility(View.INVISIBLE);
 
         }
@@ -169,8 +187,11 @@ public class IntegrantesListActivity extends ListActivity{
 
     }
 
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbAdapter.cerrar();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

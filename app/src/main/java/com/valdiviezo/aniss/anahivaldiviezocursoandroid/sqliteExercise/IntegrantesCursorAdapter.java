@@ -54,4 +54,6 @@ public class IntegrantesCursorAdapter extends CursorAdapter {
         return view;
     }
 
+
+
 }
