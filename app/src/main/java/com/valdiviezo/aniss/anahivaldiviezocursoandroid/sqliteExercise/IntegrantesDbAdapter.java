@@ -1,4 +1,4 @@
-package com.valdiviezo.aniss.anahivaldiviezocursoandroid;
+package com.valdiviezo.aniss.anahivaldiviezocursoandroid.sqliteExercise;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,6 +8,7 @@ import android.database.SQLException;
 /**
  * Created by Aniss on 22/09/2015.
  */
+
 public class IntegrantesDbAdapter {
 
 
@@ -40,12 +41,14 @@ public class IntegrantesDbAdapter {
         this.contexto = context;
     }
 
+
     public IntegrantesDbAdapter abrir() throws SQLException
     {
         dbHelper = new IntegrantesDbHelper(contexto);
         db = dbHelper.getWritableDatabase();
         return this;
     }
+
 
     public void cerrar()
     {

@@ -67,7 +67,7 @@
             android:label="@string/title_activity_camera" >
         </activity>
         <activity
-            android:name=".IntegrantesListActivity"
+            android:name=".sqliteExercise.IntegrantesListActivity"
             android:label="@string/title_activity_integrantes_list" >
         </activity>
 
