@@ -33,6 +33,7 @@ public class MainActivity extends Activity{
     private Button button_9;
     int time= 1000;
 
+    MyBroadcastReceiver mybroadcast;
     private final int PICTURE_REQUEST_CODE = 2;
     private String fileName;
 
@@ -41,7 +42,7 @@ public class MainActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MyBroadcastReceiver mybroadcast = new MyBroadcastReceiver();
+        mybroadcast = new MyBroadcastReceiver();
         registerReceiver(mybroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
         registerReceiver(mybroadcast, new IntentFilter(Intent.ACTION_SCREEN_OFF));
 
@@ -116,11 +117,11 @@ public class MainActivity extends Activity{
                 startActivity(i);
             }
         });
-        button_9 = (Button) findViewById(R.id.button9);
 
+        button_9 = (Button) findViewById(R.id.button9);
         button_9.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),IntegrantesListActivity.class);
                 startActivity(i);
 
@@ -129,6 +130,18 @@ public class MainActivity extends Activity{
 
     }
 
+    @Override
+    protected void onStop() {
+
+        super.onStop();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        this.unregisterReceiver(mybroadcast);
+        super.onDestroy();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
