@@ -66,7 +66,6 @@ public class RestActivity extends Activity {
                 URL url = new URL("http://abelmartin.com.ar/mobilelab/people.php");
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 readStreamS = readStream(con.getInputStream());
-                // Give output for the command line
 
               //  Log.e("TAG", readStreamS);
 

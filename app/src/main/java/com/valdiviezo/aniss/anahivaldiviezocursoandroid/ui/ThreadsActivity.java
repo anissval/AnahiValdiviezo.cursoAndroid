@@ -56,7 +56,7 @@ public class ThreadsActivity extends Activity {
 
                     public void run() {
 
-                        int delay = 0; // delay for 5 sec.
+                        int delay = 0; // delay for 0 sec.
 
                         int period = 1000; // repeat every sec.
 
@@ -162,7 +162,7 @@ public class ThreadsActivity extends Activity {
 
             status = true;
 
-           final int delay = 0; // delay for 5 sec.
+           final int delay = 0; // delay for 0 sec.
 
             final int period = 1000; // repeat every sec.
 

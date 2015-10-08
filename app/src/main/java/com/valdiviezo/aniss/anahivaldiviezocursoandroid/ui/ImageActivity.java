@@ -54,10 +54,7 @@ public class ImageActivity extends Activity {
 
                     Picasso.with(getApplicationContext())
                             .load(imageUri)
-                            //.fit()
                             .resize(800,800)
-                            //.onlyScaleDown()
-                            //.centerCrop()
                            .centerInside()
                             .into(imagen);
 

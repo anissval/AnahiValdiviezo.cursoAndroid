@@ -71,7 +71,6 @@ public class ImageDownloaderActivity extends Activity {
 
 
         IntentFilter filter = new IntentFilter();
-       // filter.addAction(ImageDownloaderService.ACTION_PROGRESO);
         filter.addAction(ImageDownloaderService.ACTION_FIN);
         MyBroadcastReceiver rcv = new MyBroadcastReceiver();
         registerReceiver(rcv, filter);

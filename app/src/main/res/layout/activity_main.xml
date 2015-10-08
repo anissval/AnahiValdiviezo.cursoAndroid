@@ -14,7 +14,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Curso Android BELATRIX"
         android:id="@+id/textView"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:paddingBottom="10dp"/>
 
     <Button
         android:layout_width="fill_parent"
@@ -26,49 +27,49 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Ejercicio 2 ,Compartir fotografia"
+        android:text="Ejercicio 2, Compartir fotografia"
         android:id="@+id/button2"
         android:layout_gravity="center_vertical" />
     <Button
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="Ejercicio 3 ,Timer con hilos"
+    android:text="Ejercicio 3, Timer con hilos"
     android:id="@+id/button3"
     android:layout_gravity="center_vertical" />
     <Button
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="Ejercicio 4,BroadcastReceiver"
+    android:text="Ejercicio 4, BroadcastReceiver"
     android:id="@+id/button4"
     android:layout_gravity="center_vertical" />
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Ejercicio 5 ,ImageDownloader"
+        android:text="Ejercicio 5, ImageDownloader"
         android:id="@+id/button5"
         android:layout_gravity="center_vertical" />
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Ejercicio 6 ,Lista simple"
+        android:text="Ejercicio 6, Lista simple"
         android:id="@+id/button6"
         android:layout_gravity="center_vertical" />
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Ejercicio 7 ,Location"
+        android:text="Ejercicio 7, Location"
         android:id="@+id/button7"
         android:layout_gravity="center_vertical" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Ejercicio 8 ,Rest Access"
+        android:text="Ejercicio 8, Rest Access"
         android:id="@+id/button8" />
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Ejercicio 9 ,Base de datos sqlite"
+        android:text="Ejercicio 9, Base de datos sqlite"
         android:id="@+id/button9" />
 
     <TextView

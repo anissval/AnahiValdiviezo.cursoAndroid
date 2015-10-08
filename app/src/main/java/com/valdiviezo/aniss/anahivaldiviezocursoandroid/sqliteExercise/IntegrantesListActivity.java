@@ -13,7 +13,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.valdiviezo.aniss.anahivaldiviezocursoandroid.AdaptadorIntegrantes;
 import com.valdiviezo.aniss.anahivaldiviezocursoandroid.Integrantes;
 import com.valdiviezo.aniss.anahivaldiviezocursoandroid.R;
 
@@ -24,11 +23,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.ref.PhantomReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class IntegrantesListActivity extends ListActivity{
 
@@ -47,8 +44,6 @@ public class IntegrantesListActivity extends ListActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_integrantes_list);
         progressBar = (ProgressBar) findViewById(R.id.progressBar2);
-         //saque ejecucion asynktask
-
    /*
     * Declaramos el controlador de la BBDD y accedemos en modo escritura
     */
@@ -113,7 +108,6 @@ public class IntegrantesListActivity extends ListActivity{
                 URL url = new URL("http://abelmartin.com.ar/mobilelab/people.php");
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 readStreamS = readStream(con.getInputStream());
-                // Give output for the command line
 
                 //  Log.e("TAG", readStreamS);
 
@@ -122,7 +116,6 @@ public class IntegrantesListActivity extends ListActivity{
                         JSONObject jsonObj = new JSONObject(readStreamS);
 
                         for (int i = 0; i < 5; i++) {
-                            Integrantes integrante= new Integrantes();
 
                             JSONObject c = jsonObj.getJSONObject(String.valueOf(i+1));
 
@@ -171,7 +164,6 @@ public class IntegrantesListActivity extends ListActivity{
             integrantesAdapter.notifyDataSetChanged();
         }
 
-    //metodo particular
     private static String readStream(InputStream in) {
         StringBuilder sb = new StringBuilder();
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -203,15 +195,11 @@ public class IntegrantesListActivity extends ListActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
             case R.id.action_refresh:
                 Log.e("TAG", "updating data");
-               // Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT)
-                   //     .show();
                 dbAdapter.borrar();
                 wasUpdatedDB();
                 getDatafromWebService();

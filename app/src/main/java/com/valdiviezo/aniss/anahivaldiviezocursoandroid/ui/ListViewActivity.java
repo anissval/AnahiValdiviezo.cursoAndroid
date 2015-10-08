@@ -22,7 +22,6 @@ public class ListViewActivity extends Activity {
 
         listViewSimple = (ListView) findViewById(R.id.listViewSimple);
 
-
         String[] alumnos = new String[] {
                 "Anahi Valdiviezo"
                 ,"German Moyano"
@@ -32,9 +31,6 @@ public class ListViewActivity extends Activity {
                 ,"Ever Valdes"
         };
         listViewSimple.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alumnos));
-
-
-
 
     }
 
@@ -60,9 +56,7 @@ public class ListViewActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
+    //future improvement
     public ArrayList<Alumno> addAlumnos(){
 
         Alumno a = new Alumno("Anahi","Valdiviezo");

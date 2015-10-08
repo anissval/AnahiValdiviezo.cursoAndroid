@@ -39,16 +39,7 @@ public class IntegrantesDbHelper extends SQLiteOpenHelper {
 
         db.execSQL( "CREATE UNIQUE INDEX int_nombre ON INTEGRANTES(int_nombre ASC)" );
 
-        Log.i(this.getClass().toString(), "Tabla INTEGRANTES creada");
-
-   /*
-    * Insertamos datos iniciales
-    */
-        // db.execSQL("INSERT INTO INTEGRANTES(_id, int_nombre,int_apellido,int_direccion,int_foto) VALUES(1,'Anahi','Valdiviezo','Mendoza','content://media/external/images/media/179')");
-
-
-
-      //  Log.i(this.getClass().toString(), "Datos iniciales INTEGRANTES insertados");
+          Log.i(this.getClass().toString(), "Tabla INTEGRANTES creada");
 
         Log.i(this.getClass().toString(), "Base de datos creada");
 

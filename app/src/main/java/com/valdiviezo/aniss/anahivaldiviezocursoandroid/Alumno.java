@@ -3,6 +3,7 @@ package com.valdiviezo.aniss.anahivaldiviezocursoandroid;
 /**
  * Created by Aniss on 15/09/2015.
  */
+
 public class Alumno {
 
     String nombre;

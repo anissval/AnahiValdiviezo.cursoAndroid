@@ -103,8 +103,8 @@ public class LocationActivity extends Activity implements LocationListener {
         adaptador.notifyDataSetChanged();
 
        // String msg = "New Latitude: " + location.getLatitude()
-          //      + "New Longitude: " + location.getLongitude();
-      //  Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+        //      + "New Longitude: " + location.getLongitude();
+        //  Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
     }
 
     @Override
