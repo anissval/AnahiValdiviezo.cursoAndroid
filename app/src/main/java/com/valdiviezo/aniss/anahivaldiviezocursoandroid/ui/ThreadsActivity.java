@@ -87,7 +87,7 @@ public class ThreadsActivity extends Activity {
 
                                 runOnUiThread(new Runnable() {
                                     public void run() {
-                                        Toast.makeText(getApplicationContext(), "Empieza Tarea!" +x,
+                                        Toast.makeText(getApplicationContext(), "Start Tread!",
                                                 Toast.LENGTH_SHORT).show();
                                     x=0L;
                                     }
@@ -129,6 +129,8 @@ public class ThreadsActivity extends Activity {
             public void onClick(View view) {
                 asynkTasktime.setText("");
                 MyTimer myTime = new MyTimer();
+                Toast.makeText(getApplicationContext(), "Start Asynktask!",
+                        Toast.LENGTH_SHORT).show();
                 myTime.execute();
 
             }
@@ -157,6 +159,7 @@ public class ThreadsActivity extends Activity {
 
         @Override
         protected Long doInBackground(URL... params) {
+
             status = true;
 
            final int delay = 0; // delay for 5 sec.
@@ -188,6 +191,11 @@ public class ThreadsActivity extends Activity {
 
 
                 return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
         }
 
         @Override

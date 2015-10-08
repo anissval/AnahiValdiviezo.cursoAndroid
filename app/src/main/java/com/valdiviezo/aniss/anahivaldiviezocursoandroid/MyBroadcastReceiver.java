@@ -31,19 +31,13 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
             Log.i("[BroadcastReceiver]", "Screen ON");
             dateFormat = new SimpleDateFormat("HH:mm:ss");
             date = dateFormat.format(new Date());
-            Toast.makeText(context, "Hora de encendido : " + date, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Hora de encendido : " + date, Toast.LENGTH_LONG).show();
 
 
         }
         else if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)){
             Log.i("[BroadcastReceiver]", "Screen OFF");
-
         }
-        //http://www.sgoliver.net/blog/tareas-en-segundo-plano-en-android-ii-intentservice/
-       // else if(intent.getAction().equals(ImageDownloaderService.ACTION_PROGRESO)) {
-        //    int prog = intent.getIntExtra("progreso", 0);
-         //   pbarProgreso.setProgress(prog);
-       // }
 
     }
 

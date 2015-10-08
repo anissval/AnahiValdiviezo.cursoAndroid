@@ -24,6 +24,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.ref.PhantomReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.SQLException;
@@ -39,6 +40,7 @@ public class IntegrantesListActivity extends ListActivity{
     private ListView lista;
     SQLiteDatabase db;
     private ProgressBar progressBar;
+    MyIntegrantesAsynk2 myA2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,50 +56,46 @@ public class IntegrantesListActivity extends ListActivity{
 
          db = dbHelper.getWritableDatabase();
 
-        Toast.makeText(getBaseContext(), "Base de datos preparada", Toast.LENGTH_LONG).show();
-
         lista = (ListView) findViewById(android.R.id.list);
 
         dbAdapter = new IntegrantesDbAdapter(this);
         dbAdapter.abrir();
 
         try {
-            if(isEmptyDb()){
-                MyIntegrantesAsynk2 myA2 = new MyIntegrantesAsynk2();
-                myA2.execute();
-               Log.e("Web Service", "database was empty");
-            }
             consultar();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     private void consultar() throws SQLException {
-        //trae consulta
-        cursor = dbAdapter.getCursor();
-        startManagingCursor(cursor);
-        integrantesAdapter = new IntegrantesCursorAdapter(this, cursor);
-        lista.setAdapter(integrantesAdapter);
-        Log.e("Consultar", "Rellena datos en listview");
 
-    }
-
-    public boolean isEmptyDb() {
-        int count = -1;
-        if (cursor != null && cursor.moveToFirst()) {
-            count = cursor.getInt(0);
-            if (count > 0) {
-                return false;
+        try {
+            cursor = dbAdapter.getCursor();
+            startManagingCursor(cursor);
+            integrantesAdapter = new IntegrantesCursorAdapter(getApplicationContext(), cursor);
+            lista.setAdapter(integrantesAdapter);
+            if (cursor.getCount() == 0 || !cursor.moveToFirst()) {
+                Log.e("Datos", "Lista vacia ... llenando desde webService");
+                getDatafromWebService();
             }
             else {
-                return true;
+                Log.e("Datos", "recuperando datos desde DB");
+                wasUpdatedDB();
+           }
+
+        } finally {
+            if (cursor != null) {
+                cursor.close();
             }
         }
-        return true;
+
     }
 
+    public void getDatafromWebService(){
+        myA2 = new MyIntegrantesAsynk2();
+        myA2.execute();
+    }
 
     public class MyIntegrantesAsynk2 extends AsyncTask<String, String, String> {
 
@@ -109,7 +107,7 @@ public class IntegrantesListActivity extends ListActivity{
 
         @Override
         protected String doInBackground(String... params) {
-
+            Log.e("TAG", "Executing Asynktask");
             String readStreamS = null;
             try {
                 URL url = new URL("http://abelmartin.com.ar/mobilelab/people.php");
@@ -123,7 +121,7 @@ public class IntegrantesListActivity extends ListActivity{
                     try {
                         JSONObject jsonObj = new JSONObject(readStreamS);
 
-                        for (int i = 0; i < 10; i++) {
+                        for (int i = 0; i < 5; i++) {
                             Integrantes integrante= new Integrantes();
 
                             JSONObject c = jsonObj.getJSONObject(String.valueOf(i+1));
@@ -134,7 +132,7 @@ public class IntegrantesListActivity extends ListActivity{
                             String address = c.getString("address");
                             String profileImage = c.getString("profile_image");
 
-                            db.execSQL("INSERT INTO INTEGRANTES(_id, int_nombre,int_apellido,int_direccion,int_foto) VALUES('" + id + "','" + name + "','" + lastName+"','"+address+"','"+profileImage+"')");
+                            db.execSQL("INSERT INTO INTEGRANTES(_id, int_nombre,int_apellido,int_direccion,int_foto) VALUES('" + id + "','" + name + "','" + lastName+"','"+address+"','"+profileImage+"');");
 
                         }
 
@@ -162,13 +160,16 @@ public class IntegrantesListActivity extends ListActivity{
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Log.e("TAG", "onPostExecute");
-            integrantesAdapter.swapCursor(dbAdapter.getCursor());
-            integrantesAdapter.notifyDataSetChanged();
+            wasUpdatedDB();
             progressBar.setVisibility(View.INVISIBLE);
 
         }
     }
 
+        public void wasUpdatedDB(){
+            integrantesAdapter.swapCursor(dbAdapter.getCursor());
+            integrantesAdapter.notifyDataSetChanged();
+        }
 
     //metodo particular
     private static String readStream(InputStream in) {
@@ -205,11 +206,23 @@ public class IntegrantesListActivity extends ListActivity{
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            // action with ID action_refresh was selected
+            case R.id.action_refresh:
+                Log.e("TAG", "updating data");
+               // Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT)
+                   //     .show();
+                dbAdapter.borrar();
+                wasUpdatedDB();
+                getDatafromWebService();
+                break;
+            // action with ID action_settings was selected
+            case R.id.action_settings:
+                Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT)
+                        .show();
+                break;
+            default:
+                break;
         }
 
         return super.onOptionsItemSelected(item);

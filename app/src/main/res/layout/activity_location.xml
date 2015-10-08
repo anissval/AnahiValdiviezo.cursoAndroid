@@ -6,6 +6,16 @@
     android:gravity="center"
     tools:context="com.valdiviezo.aniss.anahivaldiviezocursoandroid.ui.LocationActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Location Manager"
+        android:textStyle="bold"
+        android:id="@+id/textViewLocTitle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="40dp"/>
+
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

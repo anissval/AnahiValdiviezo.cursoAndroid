@@ -7,9 +7,22 @@
     tools:context="com.valdiviezo.aniss.anahivaldiviezocursoandroid.ui.ListViewActivity">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Simple List View Alumnos"
+        android:textStyle="bold"
+        android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="40dp"/>
+
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/listViewSimple"
-        android:layout_weight="1" />
+        android:scrollbars="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
 </LinearLayout>

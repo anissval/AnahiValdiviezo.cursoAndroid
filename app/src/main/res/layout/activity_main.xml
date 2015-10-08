@@ -4,7 +4,8 @@
     android:layout_height="fill_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/fondo">
+    android:background="@color/fondo"
+    android:scrollbars="vertical">
 
 
     <TextView
@@ -69,4 +70,12 @@
         android:layout_height="wrap_content"
         android:text="Ejercicio 9 ,Base de datos sqlite"
         android:id="@+id/button9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alumna : Anahi Valdiviezo"
+        android:id="@+id/textView3"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="0dp"/>
 </LinearLayout>

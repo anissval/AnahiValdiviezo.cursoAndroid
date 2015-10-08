@@ -34,18 +34,21 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="20dp"
-        android:weightSum="1">
+        android:weightSum="2"
+        >
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="START THREAD"
-            android:id="@+id/buttonStartT" />
+            android:id="@+id/buttonStartT"
+            android:layout_weight="1"/>
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="STOP THREAD"
-            android:id="@+id/buttonStopT" />
+            android:id="@+id/buttonStopT"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 
@@ -62,18 +65,21 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="20dp"
+        android:weightSum="2"
       >
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="START ASYNTASK"
-            android:id="@+id/buttonStartAsynk" />
+            android:id="@+id/buttonStartAsynk"
+            android:layout_weight="1"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="STOP ASYNTASK"
-            android:id="@+id/buttonStopAsynk" />
+            android:id="@+id/buttonStopAsynk"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 

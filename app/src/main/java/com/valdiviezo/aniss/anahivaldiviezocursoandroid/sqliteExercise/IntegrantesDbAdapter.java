@@ -56,6 +56,9 @@ public class IntegrantesDbAdapter {
         dbHelper.close();
     }
 
+    public void borrar(){
+        db.execSQL("DELETE FROM "+C_TABLA+";");
+    }
     /**
      * Devuelve cursor con todos las columnas de la tabla
      */

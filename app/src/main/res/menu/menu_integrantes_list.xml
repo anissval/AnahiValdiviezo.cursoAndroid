@@ -3,4 +3,10 @@
     tools:context="com.valdiviezo.aniss.anahivaldiviezocursoandroid.sqliteExercise.IntegrantesListActivity">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" android:showAsAction="never" />
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="101"
+        android:showAsAction="always"
+        android:icon="@android:drawable/ic_popup_sync"
+        android:title="Refresh"/>
 </menu>

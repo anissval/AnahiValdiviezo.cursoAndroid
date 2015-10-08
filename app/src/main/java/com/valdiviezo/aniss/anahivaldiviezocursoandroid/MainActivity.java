@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.valdiviezo.aniss.anahivaldiviezocursoandroid.sqliteExercise.IntegrantesListActivity;
 import com.valdiviezo.aniss.anahivaldiviezocursoandroid.ui.CameraActivity;
@@ -75,7 +76,8 @@ public class MainActivity extends Activity{
         button_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getApplicationContext(), "Turn off and then turn on again the screen of your phone PLEASE !",
+                        Toast.LENGTH_LONG).show();
             }
         });
         button_5 = (Button) findViewById(R.id.button5);

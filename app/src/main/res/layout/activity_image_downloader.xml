@@ -25,11 +25,12 @@
         />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="DESCARGAR"
         android:id="@+id/buttonDescarga"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:textStyle="bold"/>
 
     <ImageView
         android:layout_width="fill_parent"
@@ -37,6 +38,5 @@
         android:id="@+id/imageViewImagenDescargada"
         android:layout_weight="7"
         android:layout_gravity="center_horizontal" />
-
 
 </LinearLayout>
